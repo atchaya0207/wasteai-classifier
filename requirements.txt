@@ -6,3 +6,4 @@ Pillow
 numpy
 matplotlib
 huggingface_hub
+requests
