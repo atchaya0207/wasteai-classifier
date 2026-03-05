@@ -1,0 +1,8 @@
+gradio
+torch
+torchvision
+faiss-cpu
+Pillow
+numpy
+matplotlib
+huggingface_hub
