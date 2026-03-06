@@ -77,12 +77,9 @@ for path, file_id in DRIVE_FILES.items():
 class DINOv2Encoder(nn.Module):
     def __init__(self):
         super().__init__()
-        self.backbone = torch.hub.load(
-            'facebookresearch/dinov2', 
-            'dinov2_vitb14',
-            trust_repo=True,
-            force_reload=False
-        )
+        import timm
+        self.backbone = timm.create_model('vit_base_patch14_dinov2.lvd142m', pretrained=True)
+        self.backbone.head = nn.Identity()
         for p in self.backbone.parameters():
             p.requires_grad = False
     def forward(self, x):
