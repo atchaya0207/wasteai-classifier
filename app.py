@@ -77,7 +77,12 @@ for path, file_id in DRIVE_FILES.items():
 class DINOv2Encoder(nn.Module):
     def __init__(self):
         super().__init__()
-        self.backbone = torch.hub.load('facebookresearch/dinov2', 'dinov2_vitb14')
+        self.backbone = torch.hub.load(
+            'facebookresearch/dinov2', 
+            'dinov2_vitb14',
+            trust_repo=True,
+            force_reload=False
+        )
         for p in self.backbone.parameters():
             p.requires_grad = False
     def forward(self, x):
